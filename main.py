@@ -31,6 +31,7 @@ for res in testData:
     testResults.append(res[2].value)
 
 model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(100, 100)),
     keras.layers.Dense(128, activation=tf.nn.relu),
     keras.layers.Dense(10, activation=tf.nn.softmax)
 ])
