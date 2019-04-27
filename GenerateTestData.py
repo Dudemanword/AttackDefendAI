@@ -1,10 +1,10 @@
 from player import Player
 from enemy import Enemy
 from actions import Action
-from typing import Dict, List
+from typing import Dict, List, Tuple
 import random
 
-def GenerateTestData(iterations: int) -> List[Action, Action]:
+def GenerateTestData(iterations: int) -> List[Tuple[Action, Action]]:
     testData: List[Action, Action] = []
     badGuy:Enemy = Enemy()
     for iter in range(iterations):
@@ -18,4 +18,4 @@ def GeneratePlayerAction() -> Action:
     if randomValue == 0:
         return mainPlayer.Attack()
     else:
-        return mainPlayer.Defend
+        return mainPlayer.Defend()

@@ -3,13 +3,13 @@ import random
 from enemy import Enemy
 from result import Result
 from determinator import Determinator
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from actions import Action
 
 #Generate random list of attack/defend from a player
 #Get response from enemy
 #Classify result as good or bad
-def GenerateTrainingData() -> List[Action, Action, Result] :
+def GenerateTrainingData() -> List[Tuple[Action, Action, Result]] :
     classificationData = []
     
     badGuy: Enemy = Enemy()
@@ -24,7 +24,7 @@ def GenerateTrainingData() -> List[Action, Action, Result] :
 
     return classificationData
 
-def GetPlayerAction():
+def GetPlayerAction() -> Action:
     mainPlayer: Player = Player()
     randomValue: int = random.randrange(0, 2)
     if(randomValue == 0):
