@@ -31,15 +31,15 @@ for res in testData:
     testResults.append(res[2].value)
 
 model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(100, 100)),
-    keras.layers.Dense(128, activation=tf.nn.relu),
-    keras.layers.Dense(10, activation=tf.nn.softmax)
+    keras.layers.Dense(2, activation=tf.nn.relu, input_shape=(1,)),
+    keras.layers.Dense(2, activation='softmax')
 ])
 model.compile(optimizer='adam', 
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
-              
-model.fit(np.array(trainingPlayerActions), np.array(trainingResults), epochs=5)
+q = np.array(trainingPlayerActions)
+z = np.array(testResults)
+
+model.fit(np.array(trainingPlayerActions), np.array(trainingResults), epochs=10, steps_per_epoch=1000)
 test_loss, test_acc = model.evaluate(np.array(testPlayerActions), np.array(testResults))
 print('Test accuracy:', test_acc)
-
